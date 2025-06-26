@@ -5,8 +5,9 @@ def main():
 	word_to_guess = list("_"*len(word))
 	attempts = 0
 
-	print("Welcome in hangman game.\n\n\n")
+	print("Welcome in hangman game.")
 	while word_to_guess != word and attempts < 5:
+		print(f"{ART[attempts]}\n")
 		print(f"The word to guess is: {"".join(word_to_guess)}")
 		character = input("Enter a character: ")
 		if character in word:

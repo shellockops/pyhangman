@@ -14,5 +14,6 @@ def main():
 		else:
 			attempts += 1
 			print("Try again")
+		clear_screen()
 
 main()	

@@ -25,6 +25,7 @@ def main():
 			attempts += 1
 			print("Try again")
 		clear_screen()
+
 	result = True
 	if '_' in word_to_guess:
 		result = False

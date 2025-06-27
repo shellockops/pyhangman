@@ -13,10 +13,18 @@ def take_random_word():
   try:
     with open('wordlist.txt', 'r') as wordlist:
       for word in wordlist:
+        if not word.isalpha():
+          raise Exception("Your wordlist contains words with not alphabetical characters")
         words.append(word.strip())
-  except FileNotFoundError:
-    print("File not found. Make sure to have a file named: 'wordlist.txt' in this directory")
-    exit()
+  
+  except FileNotFoundError as e:
+    e.add_note("Make sure to have a file named: 'wordlist.txt' in this directory")
+    raise
+
+  except IndexError as err:
+    err.add_note("Don't forget to fill the file with words line by line")
+    raise
+
   return random.choice(words)
 
 def print_typed_chars(char_already_typed):
@@ -31,6 +39,7 @@ def final_screen(art, attempt, result):
     print("Congratulations, you guessed the word.")
   else:
     print("You lose. It will be better the next time, byee.")
+
 
 ART = ['''
   +---+

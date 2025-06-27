@@ -10,9 +10,13 @@ def clear_screen():
 
 def take_random_word():
   words = []
-  with open('wordlist.txt', 'r') as wordlist:
-    for word in wordlist:
-      words.append(word.strip())
+  try:
+    with open('wordlist.txt', 'r') as wordlist:
+      for word in wordlist:
+        words.append(word.strip())
+  except FileNotFoundError:
+    print("File not found. Make sure to have a file named: 'wordlist.txt' in this directory")
+    exit()
   return random.choice(words)
 
 def print_typed_chars(char_already_typed):

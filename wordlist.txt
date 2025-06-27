@@ -1,0 +1,10 @@
+redhat
+fedora
+almalinux
+centos
+python
+terminal
+shell
+plasma
+systemd
+ethernet

@@ -2,6 +2,7 @@ from hangman import *
 import time
 
 def main():
+	__import__("os").system("")
 	word = list(take_random_word())
 	word_to_guess = list("_"*len(word))
 	attempts = 0
@@ -18,7 +19,7 @@ def main():
 		character = input("Enter a character: ")
 		if not character.isalpha():
 			print("Invalid character")
-			time.sleep(1.5)
+			time.sleep(0.9)
 			clear_screen()
 			continue
 

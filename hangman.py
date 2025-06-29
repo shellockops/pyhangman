@@ -6,7 +6,7 @@ def update_word(character, word, word_to_guess):
       word_to_guess[i] = character
 
 def clear_screen():
-	print("\033[3J\033[H")
+	print("\033[2J\033[H")
 
 def take_random_word():
   words = []

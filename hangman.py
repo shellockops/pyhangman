@@ -6,14 +6,14 @@ def update_word(character, word, word_to_guess):
       word_to_guess[i] = character
 
 def clear_screen():
-	print("\033[2J\033[H")
+	print("\033[3J\033[H")
 
 def take_random_word():
   words = []
   try:
     with open('wordlist.txt', 'r') as wordlist:
       for word in wordlist:
-        if not word.isalpha():
+        if not word.strip().isalpha():
           raise Exception("Your wordlist contains words with not alphabetical characters")
         words.append(word.strip())
   
@@ -25,7 +25,7 @@ def take_random_word():
     err.add_note("Don't forget to fill the file with words line by line")
     raise
 
-  return random.choice(words)
+  return random.choice(words).lower()
 
 def print_typed_chars(char_already_typed):
   print("Characters already typed: ", end="")

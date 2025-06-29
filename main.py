@@ -1,4 +1,5 @@
 from hangman import *
+import time
 
 def main():
 	word = list(take_random_word())
@@ -16,12 +17,15 @@ def main():
 			print_typed_chars(char_already_typed)
 		character = input("Enter a character: ")
 		if not character.isalpha():
+			print("Invalid character")
+			time.sleep(1.5)
 			clear_screen()
 			continue
+
+		char_already_typed.append(character)
 		if character in word:
 			update_word(character, word, word_to_guess)
 		else:
-			char_already_typed.append(character)
 			attempts += 1
 			print("Try again")
 		clear_screen()

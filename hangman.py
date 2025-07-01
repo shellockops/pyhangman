@@ -33,8 +33,8 @@ def print_typed_chars(char_already_typed):
     print(f"{char} ", end="")
   print()
 
-def final_screen(art, attempt, result):
-  print(art[attempt])
+def final_screen(attempt, result):
+  print(ART[attempt])
   if result:
     print("Congratulations, you guessed the word.")
   else:

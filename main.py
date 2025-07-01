@@ -8,21 +8,40 @@ def main():
 	char_already_typed = []
 
 	print("Welcome in hangman game.")
-	while word_to_guess != word and attempts < 6:
+	while word_to_guess != word and attempts < hangman.MAX_ATTEMPTS:
 		print(f"{hangman.ART[attempts]}\n")
 		print(f"The word to guess is: {"".join(word_to_guess)}")
+
 		if attempts:
 			print(f"Attempts: {attempts}")
+
 		if char_already_typed:
 			hangman.print_typed_chars(char_already_typed)
+
 		character = input("Enter a character: ")
-		if not character.isalpha():
-			print("Invalid character")
-			time.sleep(0.9)
+
+		if len(character) > 1:
+			print("ERROR: multiple characters types")
+			time.sleep(1)
 			hangman.clear_screen()
 			continue
 
-		char_already_typed.append(character)
+		if not character.isalpha():
+			print("ERROR: Invalid character")
+			time.sleep(1)
+			hangman.clear_screen()
+			continue
+
+		character = character.lower()
+
+		if character not in char_already_typed:
+			char_already_typed.append(character)
+		else:
+			print("ERROR: You've already typed this character")
+			time.sleep(1)
+			hangman.clear_screen()
+			continue
+		
 		if character in word:
 			hangman.update_word(character, word, word_to_guess)
 		else:

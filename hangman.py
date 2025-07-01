@@ -14,16 +14,13 @@ def take_random_word():
     with open('wordlist.txt', 'r') as wordlist:
       for word in wordlist:
         if not word.strip().isalpha():
-          raise Exception("Your wordlist contains words with not alphabetical characters")
+          print("ERRROR: Invalid wordlist\nYour wordlist contains invalid words or empty lines.")
+          exit(1)
         words.append(word.strip())
   
-  except FileNotFoundError as e:
-    e.add_note("Make sure to have a file named: 'wordlist.txt' in this directory")
-    raise
-
-  except IndexError as err:
-    err.add_note("Don't forget to fill the file with words line by line")
-    raise
+  except FileNotFoundError:
+    print("ERROR: File not found\nMake sure to have a file named: 'wordlist.txt' in this directory.")
+    exit(1)
 
   return random.choice(words).lower()
 
@@ -40,6 +37,7 @@ def final_screen(attempt, result):
   else:
     print("You lose. It will be better the next time, byee.")
 
+MAX_ATTEMPTS = 6
 
 ART = ['''
   +---+
